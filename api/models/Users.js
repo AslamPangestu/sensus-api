@@ -9,8 +9,8 @@ module.exports = {
   attributes: {
     email: { type: "string", required: true, unique: true },
     password: { type: "string", required: true },
+    createdAt: { type: "string", required: true, columnName: "created_at" },
     regions: { collection: "regions", via: "createdBy" },
-    persons: { collection: "person", via: "createdBy" },
-    updatedAt: false
+    persons: { collection: "person", via: "createdBy" }
   }
 };

@@ -8,8 +8,8 @@
 module.exports = {
   attributes: {
     name: { type: "string", required: true },
-    createdBy: { model: "users", columnName: "created_by" },
     persons: { collection: "person", via: "regionId" },
-    updatedAt: false
+    createdAt: { type: "string", required: true, columnName: "created_at" },
+    createdBy: { model: "users", columnName: "created_by" }
   }
 };

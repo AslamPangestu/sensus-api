@@ -8,10 +8,10 @@
 module.exports = {
   attributes: {
     name: { type: "string", required: true },
-    regionId: { model: "regions", columnName: "region_id" },
     address: { type: "string", required: true },
     income: { type: "string", required: true },
-    createdBy: { model: "users", columnName: "created_by" },
-    updatedAt: false
+    createdAt: { type: "string", required: true, columnName: "created_at" },
+    regionId: { model: "regions", columnName: "region_id" },
+    createdBy: { model: "users", columnName: "created_by" }
   }
 };
