@@ -84,7 +84,7 @@ module.exports = {
     }
   },
 
-  async findByID(req, res) {
+  async findOne(req, res) {
     try {
       let users;
       if (req.params.id !== undefined) {
@@ -102,24 +102,25 @@ module.exports = {
           });
         }
       } else if (req.params.email !== undefined) {
-        if (
-          req.params.email !== undefined ||
-          req.params.password !== undefined
-        ) {
+        if (req.params.id !== undefined || req.params.password !== undefined) {
           return res.status(400).json({
             status: 400,
             message: "Terlalu banyak argumen"
           });
         } else {
-          users = await Users.findOne({
-            email: req.params.email
-          });
+          if (!EMAIL_REGEX.test(req.params.email)) {
+            return res.status(400).json({
+              status: 400,
+              message: "Email tidak valid"
+            });
+          } else {
+            users = await Users.findOne({
+              email: req.params.email
+            });
+          }
         }
       } else if (req.params.password !== undefined) {
-        if (
-          req.params.email !== undefined ||
-          req.params.password !== undefined
-        ) {
+        if (req.params.email !== undefined || req.params.id !== undefined) {
           return res.status(400).json({
             status: 400,
             message: "Terlalu banyak argumen"

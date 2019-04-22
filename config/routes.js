@@ -19,9 +19,12 @@ module.exports.routes = {
    ***************************************************************************/
 
   "/": { view: "pages/homepage" },
+  //USERS API
   "POST /v1/users": "UsersController.create",
   "GET /v1/users": "UsersController.findAll",
-  "GET /v1/users/:id": "UsersController.findByID",
+  "GET /v1/users/:id": "UsersController.findOne",
+  "GET /v1/users/:email": "UsersController.findOne",
+  "GET /v1/users/:password": "UsersController.findOne",
   "PATCH /v1/users/:id": "UsersController.update",
   "DELETE /v1/users/:id": "UsersController.delete"
 
