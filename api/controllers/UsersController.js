@@ -63,8 +63,8 @@ module.exports = {
     try {
       const users = await Users.find();
       if (users.length === 0) {
-        return res.status(204).json({
-          status: 204,
+        return res.status(200).json({
+          status: 200,
           message: "Daftar user kosong"
         });
       } else if (users === undefined) {
@@ -191,8 +191,8 @@ module.exports = {
         id: req.params.id
       });
       if (results === undefined) {
-        return res.status(200).json({
-          status: 200,
+        return res.status(204).json({
+          status: 204,
           message: `Data dengan ${req.params.id} berhasil dihapus`,
           data: results
         });
